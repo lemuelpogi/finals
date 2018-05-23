@@ -1,8 +1,8 @@
 <?php
 
-namespace finals\controllers;
+namespace app\controllers;
 
-class ArtistsController extends \yii\web\Controller
+class ArtistController extends \yii\web\Controller
 {
     public function actionCreate()
     {

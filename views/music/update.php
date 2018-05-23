@@ -1,9 +1,28 @@
 <?php
-/* @var $this yii\web\View */
+use yii\helpers\Html;
+use yii\widgets\ActiveForm;
 ?>
-<h1>music/update</h1>
+<h1>Update Your Music</h1>
 
-<p>
-    You may change the content of this page by modifying
-    the file <code><?= __FILE__; ?></code>.
-</p>
+<div class="row">
+	<div class="col-md-6">
+
+		<?php $form = ActiveForm::begin() ?>
+
+			<?= $form->field($model, 'title')->textInput() ?>
+
+			<?= $form->field($model, 'year')->textInput() ?>
+
+			<?= $form->field($model, 'genre')->textInput() ?>
+			
+			<div class="pull-right">
+	<?= Html::a('Update Your Music',
+	['music/view', 'id'=> $model->id],
+	['class' => 'btn btn-primary glyphicon glyphicon-pencil']); ?>
+	
+</div>
+
+
+			<?php ActiveForm::end(); ?>
+	</div>
+</div>

@@ -1,6 +1,6 @@
 <?php
 
-namespace finals\models;
+namespace app\models;
 
 use Yii;
 
@@ -19,7 +19,7 @@ use Yii;
 class Producers extends \yii\db\ActiveRecord
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public static function tableName()
     {
@@ -27,7 +27,7 @@ class Producers extends \yii\db\ActiveRecord
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function rules()
     {
@@ -41,7 +41,7 @@ class Producers extends \yii\db\ActiveRecord
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function attributeLabels()
     {

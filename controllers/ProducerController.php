@@ -1,8 +1,8 @@
 <?php
 
-namespace finals\controllers;
+namespace app\controllers;
 
-class ProducersController extends \yii\web\Controller
+class ProducerController extends \yii\web\Controller
 {
     public function actionCreate()
     {

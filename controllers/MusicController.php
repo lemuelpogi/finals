@@ -1,32 +1,52 @@
 <?php
 
-namespace finals\controllers;
+namespace app\controllers;
+use app\models\Music;
+use yii;
 
 class MusicController extends \yii\web\Controller
 {
     public function actionCreate()
     {
-        return $this->render('create');
+        $model = new Music;
+
+        if($model->load(Yii::$app->request->post()) && $model->save()
+        ){
+            return $this->redirect(['/music/index']);
+        }
+        return $this->render('create',['model' => $model]);
     }
 
-    public function actionDelete()
+    public function actionDelete($id)
     {
-        return $this->render('delete');
+        $model = Music::findOne($id);
+
+        Yii::$app->db->createCommand()
+        ->delete('music','id=:id',[':id'=>$id])
+        ->execute();
+
+        $model->delete();
+        
+        return $this->redirect(['/music/index']);
     }
 
     public function actionIndex()
     {
-        return $this->render('index');
+        $music = Music::find()->orderBy('title')->all();
+        return $this->render('index',['music'=>$music]);
     }
 
-    public function actionUpdate()
+    public function actionUpdate($id)
     {
-        return $this->render('update');
+        $model = Music::findOne($id);
+        return $this->render('update',compact('model'));
     }
 
-    public function actionView()
+    public function actionView($id)
     {
-        return $this->render('view');
+        $model = Music::findOne($id);
+
+        return $this->render('view',compact('model'));
     }
 
 }
