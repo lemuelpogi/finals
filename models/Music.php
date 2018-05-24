@@ -1,7 +1,7 @@
 <?php
 
 namespace app\models;
-
+use app\models\User;
 use Yii;
 
 /**
@@ -57,4 +57,9 @@ class Music extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Producers::className(), ['music_id' => 'id']);
     }
+    public function getUser()
+    {
+        return $this->hasOne(User::className(), ['id' => 'user_id']);
+    }
 }
+

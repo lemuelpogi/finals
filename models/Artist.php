@@ -57,4 +57,8 @@ class Artist extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Producers::className(), ['artist_id' => 'id']);
     }
+    public function getUser()
+    {
+        return $this->hasOne(User::className(), ['id' => 'user_id']);
+    }
 }

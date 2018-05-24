@@ -3,18 +3,55 @@
 namespace app\controllers;
 use app\models\Music;
 use yii;
+use app\models\User;
+use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
+use app\components\AccessRule;
+
 
 class MusicController extends \yii\web\Controller
 {
+    public function behaviors()
+    {
+        return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'ruleConfig' => [
+                    'class' => AccessRule::className(),
+                ],
+                'only' => ['create','update','delete'],
+                'rules'=>[
+                    [
+                        'actions'=>['create','update'],
+                        'allow' => true,
+                        'roles' => ['@']
+                    ],
+                    [
+                        'actions' => ['delete'],
+                        'allow' => true,
+                        'roles' => ['@']
+                    ]
+                ],
+            ],
+            'verbs' => [
+                'class' => VerbFilter::className(),
+                'actions' => [
+                    'delete' => ['POST'],
+                ],
+            ],
+
+
+        ];
+    }
     public function actionCreate()
     {
         $model = new Music;
 
-        if($model->load(Yii::$app->request->post()) && $model->save()
-        ){
-            return $this->redirect(['/music/index']);
+        if($model->load(Yii::$app->request->post()) && $model->save()){
+            $this->redirect(['music/index']);
         }
-        return $this->render('create',['model' => $model]);
+
+        return $this->render('create', compact('model'));
     }
 
     public function actionDelete($id)
