@@ -15,12 +15,9 @@ use yii\widgets\ActiveForm;
 
 			<?= $form->field($model, 'country')->textInput() ?>
 			
-			<div class="pull-right">
-	<?= Html::a('Update Your Artist',
-	['artist/view', 'id'=> $model->id],
-	['class' => 'btn btn-primary glyphicon glyphicon-pencil']); ?>
-	
-</div>
+			<div class="form-group">
+    	<?= Html::submitButton("Update Artist", ['class'=>'btn btn-primary']); ?>
+			</div>
 
 
 			<?php ActiveForm::end(); ?>

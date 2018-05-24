@@ -76,7 +76,12 @@ class MusicController extends \yii\web\Controller
     public function actionUpdate($id)
     {
         $model = Music::findOne($id);
-        return $this->render('update',compact('model'));
+
+            if($model->load(Yii::$app->request->post()) && $model->save()) {
+            $this->redirect(['/music/view', 'id'=>$id]);
+        }
+
+        return $this->render('update', compact('model'));
     }
 
     public function actionView($id)

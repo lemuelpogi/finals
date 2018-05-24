@@ -78,7 +78,12 @@ class ProducerController extends \yii\web\Controller
     public function actionUpdate($id)
     {
         $model = Producers::findOne($id);
-        return $this->render('update',compact('model'));
+
+            if($model->load(Yii::$app->request->post()) && $model->save()) {
+            $this->redirect(['/producer/view', 'id'=>$id]);
+        }
+
+        return $this->render('update', compact('model'));
     }
 
     public function actionView($id)

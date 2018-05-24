@@ -15,14 +15,8 @@ use yii\widgets\ActiveForm;
 
 			<?= $form->field($model, 'genre')->textInput() ?>
 			
-			<div class="pull-right">
-	<?= Html::a('Update Your Music',
-	['music/view', 'id'=> $model->id],
-	['class' => 'btn btn-primary glyphicon glyphicon-pencil']); ?>
-	
-</div>
-
+			<div class="form-group">
+    	<?= Html::submitButton("Update Music", ['class'=>'btn btn-primary']); ?>
+			</div>
 
 			<?php ActiveForm::end(); ?>
-	</div>
-</div>

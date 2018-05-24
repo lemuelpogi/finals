@@ -20,7 +20,7 @@ $this->params['breadcrums'][] = $model->producer_name;
 ]]); ?>
 
 <div class="pull-right">
-	<?= Html::a('Update Artist',
+	<?= Html::a('Update Producer',
             ['/producer/update','id'=>$model->id],
             ['class'=>'btn btn-primary glyphicon glyphicon-pencil']);?>
     <?= Html::a('Delete', ['delete', 'id' => $model->id], [
