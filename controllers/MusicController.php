@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 use app\models\Music;
+use app\models\Producers;
 use yii;
 use app\models\User;
 use yii\filters\VerbFilter;
@@ -59,7 +60,7 @@ class MusicController extends \yii\web\Controller
         $model = Music::findOne($id);
 
         Yii::$app->db->createCommand()
-        ->delete('music','id=:id',[':id'=>$id])
+        ->delete('producers','music_id=:id',[':id'=>$id])
         ->execute();
 
         $model->delete();

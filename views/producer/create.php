@@ -5,14 +5,14 @@ use app\models\Music;
 use app\models\Artist;
 use yii\helpers\ArrayHelper;
 ?>
-<h1>Create Product</h1>
+<h1>Create Producer</h1>
 
 <div class="row">
 	<div class="col-md-6">
 
 		<?php $form = ActiveForm::begin() ?>
 			<?= $form->field($model,'music_id')->dropDownList(ArrayHelper::map(
-				Music::find()->asArray()->all(), 'id','title'))?>
+				Music::find()->asArray()->all(), 'id','title',''))?>
 
             <?= $form->field($model,'artist_id')->dropDownList(ArrayHelper::map(
 				Artist::find()->asArray()->all(), 'id','name'))?>

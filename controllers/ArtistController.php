@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 use app\models\Artist;
+use app\models\Producers;
 use yii;
 use app\models\User;
 use yii\filters\VerbFilter;
@@ -59,7 +60,7 @@ class ArtistController extends \yii\web\Controller
         $model = Artist::findOne($id);
 
         Yii::$app->db->createCommand()
-        ->delete('artist','id=:id',[':id'=>$id])
+        ->delete('producers','artist_id=:id',[':id'=>$id])
         ->execute();
 
         $model->delete();
